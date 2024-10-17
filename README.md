@@ -17,9 +17,7 @@ In order to install clone the repo and run `sudo python install.py`! Then your d
 
 ## To Do
 
-* add steam
-* add zen
-* add kde
-* yellow theme
-* batarong background
-* batarong store
+* fix everything
+* add docs
+* hope
+
