@@ -4,7 +4,7 @@
 > [!WARNING]
 > The project is in early development!
 
-A project for Vatarong so he can get the OS he deserves.
+A project for Batarong so he can get the OS he deserves.
 
 
 ## Installing
