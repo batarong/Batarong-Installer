@@ -6,6 +6,8 @@
 
 A project for Batarong so he can get the OS he deserves.
 
+Dowload BatarongOS https://batarong.neocities.org/
+
 
 ## Installing
 > [!NOTE]
