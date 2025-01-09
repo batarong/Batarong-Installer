@@ -12,6 +12,7 @@ Dowload BatarongOS https://batarong.neocities.org/
 ## Installing
 > [!NOTE]
 > i like coding
+
 > [!NOTE]
 > The pre-built ISO is out of date (the one at https://batarong.neocities.org) so if you want the latest and greatest BatarongOS, use the instructions here.
 1. Download the KDE Plasma version of Debian.
