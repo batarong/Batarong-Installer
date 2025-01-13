@@ -22,7 +22,7 @@ Dowload BatarongOS https://batarong.neocities.org/
 > [!WARNING]
 > It is important that you run the below command in the Cubic virtual environment, as there might be unforseen consequences if you run it directly on your host system.
 
-4. Run the installer: ```curl https://batarong.github.io/install.sh | sudo bash```  
+4. Run the installer: ```curl https://batarong.github.io/install.sh | sudo bash```  (or ```curl https://batarong.github.io/proprietary-nvidia-install.sh | sudo bash``` for users with nVidia GPUS who want proprietary drivers (i don't know if it works))
 5. Select the defaults until the end.
 6. You're done.
 
