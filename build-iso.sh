@@ -9,7 +9,7 @@ fi
 
 LIVE_DIR="$(pwd)/archlive"
 echo "Preparing working directory at $LIVE_DIR"
-rm -rf "$LIVE_DIR"
+sudo rm -rf "$LIVE_DIR"
 cp -r /usr/share/archiso/configs/releng "$LIVE_DIR"
 
 echo "Adding custom install scripts..."
