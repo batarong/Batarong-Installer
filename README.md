@@ -1,6 +1,4 @@
-# Custom Arch Linux ISO with XFCE and TWM-xfce Theme
-
-This repository automates the creation of a custom Arch Linux ISO with XFCE and the TWM-xfce theme preinstalled.
+# Batarongos because im sleepy
 
 ## Requirements
 - Arch Linux host system
@@ -44,3 +42,4 @@ This repository automates the creation of a custom Arch Linux ISO with XFCE and 
 - [Archiso ArchWiki](https://wiki.archlinux.org/title/Archiso)
 - [Xfce ArchWiki](https://wiki.archlinux.org/title/Xfce)
 - [LightDM ArchWiki](https://wiki.archlinux.org/title/LightDM)
+- [fdsdgfdedsx](https://en.wikipedia.org/wiki/Justin_Bieber)
