@@ -19,6 +19,7 @@
    (If any are missing, the build will warn but continue.)
 3. Run the build script:
    ```bash
+   chmod +x build.sh
    ./build.sh
    ```
 4. The ISO will be generated in `archlive/out/`.
