@@ -41,6 +41,7 @@ mkdir -p "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0"
 [ -f themes/gtk.css ] && cp themes/gtk.css "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0/" || echo "warning: gtk.css not found"
 
 mkdir -p "$LIVE_DIR/airootfs/usr/lib/systemd/system/"
+mkdir -p "$LIVE_DIR/airootfs/etc/systemd/system/graphical.target.wants/"
 
 cp scripts/liveenv.service "$LIVE_DIR/airootfs/usr/lib/systemd/system/liveenv.service"
 sudo ln -s "$LIVE_DIR/airootfs/usr/lib/systemd/system/liveenv.service" "$LIVE_DIR/airootfs/etc/systemd/system/graphical.target.wants/liveenv.service"
