@@ -40,13 +40,9 @@ mkdir -p "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0"
 [ -f themes/TW-Wallpapers/TW.png ] && cp themes/TW-Wallpapers/TW.png "$LIVE_DIR/airootfs/usr/share/backgrounds/" || echo "Warning: TW.png not found"
 [ -f themes/gtk.css ] && cp themes/gtk.css "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0/" || echo "warning: gtk.css not found"
 
-# lightdm autologin config
-mkdir -p "$LIVE_DIR/airootfs/etc/lightdm"
-cat <<EOF > "$LIVE_DIR/airootfs/etc/lightdm/lightdm.conf"
-[Seat:*]
-autologin-user=archiso
-autologin-session=xfce
-EOF
+cp scripts/liveenv.service "$LIVE_DIR/airootfs/usr/lib/systemd/system/liveenv.service"
+sudo ln -s /usr/lib/systemd/system/liveenv.service /etc/systemd/system/graphical.target.wants/liveenv.service
+
 
 cp scripts/customize_airootfs.sh "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
