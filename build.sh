@@ -20,11 +20,12 @@ xfce4-goodies
 lightdm
 lightdm-gtk-greeter
 xorg-server
+xorg-xinit
+xorg-xauth
 firefox
 thunar
 xfce4-terminal
 network-manager-applet
-xorg-xinit
 EOF
 
 # copy theme files if they exist
@@ -41,13 +42,11 @@ mkdir -p "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0"
 [ -f themes/gtk.css ] && cp themes/gtk.css "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0/" || echo "warning: gtk.css not found"
 
 mkdir -p "$LIVE_DIR/airootfs/usr/lib/systemd/system/"
-mkdir -p "$LIVE_DIR/airootfs/etc/systemd/system/graphical.target.wants/"
 
-cp scripts/liveenv.service "$LIVE_DIR/airootfs/usr/lib/systemd/system/liveenv.service"
-sudo ln -s "$LIVE_DIR/airootfs/usr/lib/systemd/system/liveenv.service" "$LIVE_DIR/airootfs/etc/systemd/system/graphical.target.wants/liveenv.service"
-
-cp scripts/customize_airootfs.sh "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
-chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
+# Copy the customize script to the profile directory (not airootfs)
+# This will be executed during the chroot phase by mkarchiso
+cp scripts/customize_airootfs.sh "$LIVE_DIR/customize_airootfs.sh"
+chmod +x "$LIVE_DIR/customize_airootfs.sh"
 
 # build iso
 sudo mkarchiso -v -w "$LIVE_DIR/work" -o "$LIVE_DIR/out" "$LIVE_DIR"
