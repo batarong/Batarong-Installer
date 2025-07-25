@@ -20,6 +20,15 @@ EOF
 # Configure sudo access for wheel group
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/wheel
 
+# Enable LightDM service for graphical login
+systemctl enable lightdm.service
+
+# Set graphical target as default
+systemctl set-default graphical.target
+
+# Create display-manager service link (standard practice)
+ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/lightdm.service
+
 # xfce stuff
 if command -v xfconf-query &>/dev/null; then
   su - batarong -c 'xfconf-query -c xsettings -p /Net/ThemeName -s "TWM-theme"' || true
