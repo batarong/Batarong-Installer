@@ -27,7 +27,7 @@ systemctl enable lightdm.service
 systemctl set-default graphical.target
 
 # Create display-manager service link (standard practice)
-ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/display-manager.service
+ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/lightdm.service
 
 # xfce stuff
 if command -v xfconf-query &>/dev/null; then
