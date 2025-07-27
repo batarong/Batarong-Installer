@@ -41,12 +41,13 @@ mkdir -p "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0"
 [ -f themes/TW-Wallpapers/TW.png ] && cp themes/TW-Wallpapers/TW.png "$LIVE_DIR/airootfs/usr/share/backgrounds/" || echo "Warning: TW.png not found"
 [ -f themes/gtk.css ] && cp themes/gtk.css "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0/" || echo "warning: gtk.css not found"
 
-mkdir -p "$LIVE_DIR/airootfs/usr/lib/systemd/system/"
 
-# Copy the customize script to the profile directory (not airootfs)
-# This will be executed during the chroot phase by mkarchiso
-cp scripts/customize_airootfs.sh "$LIVE_DIR/customize_airootfs.sh"
-chmod +x "$LIVE_DIR/customize_airootfs.sh"
+# make it a pacman hook
+mkdir -p "$LIVE_DIR/airootfsetc/pacman.d/hooks/"
+cp scripts/horrible.hook "$LIVE_DIR/airootfs/etc/pacman.d/hooks/horrible.hook"
+
+cp scripts/customize_airootfs.sh "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
+chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 
 # build iso
 sudo mkarchiso -v -w "$LIVE_DIR/work" -o "$LIVE_DIR/out" "$LIVE_DIR"

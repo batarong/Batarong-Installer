@@ -1,0 +1,16 @@
+# remove from airootfs!
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+Depends = coreutils
+Depends = bash 
+Depends = shadow
+Depends = util-linux
+Depends = systemd
+Depends = xfce4
+When = PostTransaction
+Exec = /root/customize_airootfs.sh
