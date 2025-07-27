@@ -26,6 +26,7 @@ firefox
 thunar
 xfce4-terminal
 network-manager-applet
+dbus
 EOF
 
 # copy theme files if they exist
@@ -42,10 +43,7 @@ mkdir -p "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0"
 [ -f themes/gtk.css ] && cp themes/gtk.css "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0/" || echo "warning: gtk.css not found"
 
 
-# make it a pacman hook
-mkdir -p "$LIVE_DIR/airootfsetc/pacman.d/hooks/"
-cp scripts/horrible.hook "$LIVE_DIR/airootfs/etc/pacman.d/hooks/horrible.hook"
-
+# one day, i dont know why, customize airootfs will die, keep that in mind, i designed this rhyme to explain in due time, all i know, time is a valuable thing, watch it fly by as the pendulum swings, watch it count down to the end of the day, the clock ticks features away, its so unreal, did'nt look down below, watch the time fly right out the window, trying to hold on, didn't even know, i wasted it all, just to watch you go
 cp scripts/customize_airootfs.sh "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 
