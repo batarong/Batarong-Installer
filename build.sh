@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-source config.sh
-
 # check if archiso installed
 if ! pacman -Q archiso &> /dev/null; then
     echo "archiso not installed. installing..."
