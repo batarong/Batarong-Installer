@@ -20,8 +20,9 @@ EOF
 # Configure sudo access for wheel group
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/wheel
 
-# Enable LightDM service for graphical login
+# Enable LightDM and NetworkManager service for graphical login
 systemctl enable lightdm.service
+systemctl enable NetworkManager.service
 
 # Set graphical target as default
 systemctl set-default graphical.target
