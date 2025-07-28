@@ -44,5 +44,6 @@ else
   echo "warning: xfconf-query not found. xfce settings might not work"
 fi
 
-
+echo "INFO: extra config can be placed here, type exit to exit and continue"
+su batarong
 

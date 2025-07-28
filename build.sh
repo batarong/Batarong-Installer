@@ -12,6 +12,8 @@ fi
 LIVE_DIR="archlive"
 rm -rf "$LIVE_DIR"
 cp -r /usr/share/archiso/configs/releng "$LIVE_DIR"
+rm -f "$LIVE_DIR/profiledef.sh"
+cp profiledef.sh "$LIVE_DIR/profiledef.sh"
 
 # add packages for xfce
 cat <<EOF >> "$LIVE_DIR/packages.x86_64"
@@ -57,4 +59,4 @@ if [ -d "$LIVE_DIR/airootfs/usr/share/fonts/" ]; then
 fi
 
 ISO_PATH=$(find "$LIVE_DIR/out" -name "*.iso" | head -n1)
-echo "custom iso built at $ISO_PATH"
+echo "custom iso built at $ISO_PATH
