@@ -31,19 +31,20 @@ systemctl set-default graphical.target
 ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/lightdm.service
 
 # xfce stuff
-if command -v xfconf-query &>/dev/null; then
-  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Net/ThemeName -s "TWM-theme" --create' || true
-  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Net/IconThemeName -s "TWM" --create' || true
-  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Gtk/FontName -s "terminus Medium 11" --create' || true
-  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Gtk/MonospaceFontName -s "Terminus Bold 11" --create' || true
-  su - batarong -c 'dbus-launch xfconf-query -c xfwm4 -p /general/theme -s "TWM-theme" --create' || true
-  su - batarong -c 'dbus-launch xfconf-query -c xfwm4 -p /general/title_font -s "terminus Bold 15" --create' || true
-  su - batarong -c 'dbus-launch xfconf-query -c xfwm4 -p /general/title_alignment -s "left" --create' || true
-  su - batarong -c 'dbus-launch xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s /usr/share/backgrounds/TW.png --create' || true
-else
-  echo "warning: xfconf-query not found. xfce settings might not work"
-fi
+#if command -v xfconf-query &>/dev/null; then
+#  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Net/ThemeName -s "TWM-theme" --create' || true
+#  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Net/IconThemeName -s "TWM" --create' || true
+#  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Gtk/FontName -s "terminus Medium 11" --create' || true
+#  su - batarong -c 'dbus-launch xfconf-query -c xsettings -p /Gtk/MonospaceFontName -s "Terminus Bold 11" --create' || true
+#  su - batarong -c 'dbus-launch xfconf-query -c xfwm4 -p /general/theme -s "TWM-theme" --create' || true
+#  su - batarong -c 'dbus-launch xfconf-query -c xfwm4 -p /general/title_font -s "terminus Bold 15" --create' || true
+#  su - batarong -c 'dbus-launch xfconf-query -c xfwm4 -p /general/title_alignment -s "left" --create' || true
+#  su - batarong -c 'dbus-launch xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s /usr/share/backgrounds/TW.png --create' || true
+#else
+#  echo "warning: xfconf-query not found. xfce settings might not work"
+#fi
 
 echo "INFO: extra config can be placed here, type exit to exit and continue"
+echo "INFO: copy Xauthority from home, ssh into localhost with x11 forwarding, chroot into thing archlive/work/x86_64/airootfs, open another tty and run `sudo mount --rbind /dev /(wherever)/Batarong-Installer/archlive/work/x86_64/airootfs/dev`, and run `dbus-launch xfce4-settings-manager` in chroot, youll figure it out later"
 su batarong
 
