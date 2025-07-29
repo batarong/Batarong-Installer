@@ -12,6 +12,8 @@ rm -rf "$LIVE_DIR"
 cp -r /usr/share/archiso/configs/releng "$LIVE_DIR"
 rm -f "$LIVE_DIR/profiledef.sh"
 cp profiledef.sh "$LIVE_DIR/profiledef.sh"
+rm -f "$LIVE_DIR/pacman.conf"
+cp pacman.conf "$LIVE_DIR/pacman.conf"
 
 # add packages for xfce
 cat <<EOF >> "$LIVE_DIR/packages.x86_64"
@@ -27,6 +29,106 @@ thunar
 xfce4-terminal
 network-manager-applet
 dbus
+fastfetch
+EOF
+
+# Change hostname
+cat > "$LIVE_DIR/airootfs/etc/hostname" << 'EOF'
+batarong-installer
+EOF
+
+# Change os-release (LOGO=archlinux-logo where is this and how to change)
+cat > "$LIVE_DIR/airootfs/usr/lib/os-release" << 'EOF'
+NAME="BatarongOS"
+PRETTY_NAME="BatarongOS"
+ID=batarongos
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;255;255;0"
+HOME_URL="https://batarong.neocities.org/"
+EOF
+
+# Configure autologin (pleaseeeeeeeee)
+mkdir -p /etc/lightdm
+cat > /etc/lightdm/lightdm.conf << 'EOF'
+[Seat:*]
+autologin-user=batarong
+autologin-user-timeout=15
+session-wrapper=/etc/lightdm/Xsession
+greeter-session=lightdm-gtk-greeter
+EOF
+
+# Configure Neofetch
+mkdir -p /etc/skel/.config/fastfetch/
+cat > /etc/skel/.config/fastfetch/config.jsonc << 'EOF'
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "host",
+    "kernel",
+    "uptime",
+    "packages",
+    "shell",
+    "display",
+    "de",
+    "wm",
+    "wmtheme",
+    "theme",
+    "icons",
+    "font",
+    "cursor",
+    "terminal",
+    "terminalfont",
+    "cpu",
+    "gpu",
+    "memory",
+    "swap",
+    "disk",
+    "localip",
+    "battery",
+    "poweradapter",
+    "locale",
+    "break",
+    "colors"
+  ],
+  "logo": {
+    "type": "file",        // Logo type: auto, builtin, small, file, etc.
+    "source": "/ascii.txt",
+    "color": {             // Override logo colors
+        "1": "yellow",
+        "2": "white",
+        "3": "red"
+
+    }
+}
+}
+EOF
+
+# Configure Neofetch
+cat > /ascii.txt << 'EOF'
+                   $1-:+=+
+                  ::-===+
+                 -:----+=+
+   $2 -=-$1         -:-----=+=+
+   $2-==:=$1       -:-+=-:-+=-=+
+$2---+****$1     =-+$2%%+$1+=$2%%*$1++++#%%%%##
+$2-:-****#$1%%%%#=--++++=++++++#%%#%%%%%%
+$2===**+*#$1%%%%+===-========++++==  *++=-:.
+ $2=++ -+$1   **+=--:::::::---==+== ::=*+:.:
+         ***+==============+===--++$2**=..$1
+        ==++++===---======++++==== $2=++-:$1
+       ---=======+=+=========+==== :$2=++=$1
+       ++++=*##**++++==============:$2-=+=$1
+           *#%%%   #***#%%#***+++=+====
+           %%%%       %%%%%
+          $3*##%%%##    $1 %%%%%
+       $3*++*##%%%###   *##****##
+      *+-=#%%%%%#### #++*#######
+      -:=*###%%%%%%**+-=*##%%####
+                   *-:-+*###%%%%#
 EOF
 
 # copy theme files if they exist

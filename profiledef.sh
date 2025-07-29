@@ -4,7 +4,7 @@
 iso_name="BatarongOS"
 iso_label="BatarongOS Installer"
 iso_publisher="NileDev <>"
-iso_application="Arch Linux Live/Rescue DVD"
+iso_application="BatarongOS Live/Rescue DVD"
 iso_version="DEBUG"
 install_dir="arch"
 buildmodes=('iso')
