@@ -39,7 +39,7 @@ mkdir -p "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0"
 [ -d themes/TWM-fonts ] && cp -r themes/TWM-fonts "$LIVE_DIR/airootfs/usr/share/fonts/" || echo "warning: TWM-fonts not found"
 [ -d themes/TWM-icons ] && cp -r themes/TWM-icons "$LIVE_DIR/airootfs/usr/share/icons/" || echo "Warning: TWM-icons not found"
 [ -d themes/TWM-theme ] && cp -r themes/TWM-theme "$LIVE_DIR/airootfs/usr/share/themes/" || echo "warning: TWM-theme not found"
-[ -f themes/TW-Wallpapers/TW.png ] && cp themes/TW-Wallpapers/TW.png "$LIVE_DIR/airootfs/usr/share/backgrounds/" || echo "Warning: TW.png not found"
+[ -d themes/Wallpapers ] && cp -r themes/Wallpapers/* "$LIVE_DIR/airootfs/usr/share/backgrounds/ || echo "Warning: Wallpapers not found"
 [ -f themes/gtk.css ] && cp themes/gtk.css "$LIVE_DIR/airootfs/home/archiso/.config/gtk-3.0/" || echo "warning: gtk.css not found"
 
 
