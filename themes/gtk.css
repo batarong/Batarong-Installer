@@ -21,19 +21,19 @@ VteTerminal, vte-terminal {
 }
 
 .xfce4-panel {
-	border-top: 3px solid #9666ff;
+	border-top: 3px solid #FFFF00;
 	background-color: #000000;
 }
 
 .xfce4-panel .tasklist .toggle {
 	border-width: 5px;
 	border-radius: 0px;
-	border-color: #9666ff;
+	border-color: #FFFF00;
 	margin-top: 6px;
 	margin-right: 5px;
 	margin-left:  0px;
 	font-size: 15px;
-	color: #9666ff;
+	color: #FFFF00;
 }
 
 .xfce4-panel .tasklist image {
@@ -42,25 +42,25 @@ VteTerminal, vte-terminal {
  }
 
 .xfce4-panel .tasklist .toggle:checked box {
-	background-color: #9666ff;
+	background-color: #FFFF00;
 	color: black;
 }
 
 XfdesktopIconView.label {
-    color: #9666ff;
+    color: #FFFF00;
 }
 .nemo-window .view {
     background-color: #000000;
-    color: #9666ff;
+    color: #FFFF00;
 }
 
 .nemo-window .sidebar .view {
     background-color: #000000;
-    color: #9666ff;
+    color: #FFFF00;
 }
 
 #clock-button{
 	margin-right: 10px;
 	font-size: 16px;
-	color: #9666ff;
+	color: #FFFF00;
 }

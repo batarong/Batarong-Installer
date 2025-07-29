@@ -45,6 +45,6 @@ ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/lightdm.servi
 #fi
 
 echo "INFO: extra config can be placed here, type exit to exit and continue"
-echo "INFO: copy Xauthority from home, ssh into localhost with x11 forwarding, chroot into thing archlive/work/x86_64/airootfs, open another tty and run `sudo mount --rbind /dev /(wherever)/Batarong-Installer/archlive/work/x86_64/airootfs/dev`, and run `dbus-launch xfce4-settings-manager` in chroot, youll figure it out later"
+echo "INFO: ssh into localhost with x11 forwarding, copy .Xauthority, chroot into thing archlive/work/x86_64/airootfs, open another tty and run sudo mount --rbind /dev /[wherever]/Batarong-Installer/archlive/work/x86_64/airootfs/dev, and run dbus-launch xfce4-settings-manager in chroot [in the same ssh tab], youll figure it out later"
+echo "INFO: https://github.com/pdn6606/TWM-xfce/blob/main/README.md follow all nonoptional configuration instructions."
 su batarong
-

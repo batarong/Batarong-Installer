@@ -57,4 +57,4 @@ if [ -d "$LIVE_DIR/airootfs/usr/share/fonts/" ]; then
 fi
 
 ISO_PATH=$(find "$LIVE_DIR/out" -name "*.iso" | head -n1)
-echo "custom iso built at $ISO_PATH
+echo "custom iso built at $ISO_PATH"

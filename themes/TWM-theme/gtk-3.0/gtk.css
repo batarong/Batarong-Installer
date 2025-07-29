@@ -3,23 +3,23 @@
  **********/
 
 @define-color menu_color @bg_color;
-@define-color button_color alpha(#9666FF,0.2);
+@define-color button_color alpha(#FFFF00,0.2);
 @define-color alt_button @button_color;
 @define-color notibg shade(@bg_color,1.3);
 @define-color wbg alpha(@selected_bg_color,0.3);
 @define-color invertbg alpha(black,0.08);
 @define-color panel_bg shade(@bg_color,0.5);
 @define-color panel_fg white;
-@define-color scrollbar_color #9666FF;
+@define-color scrollbar_color #FFFF00;
 
 @define-color colorPrimary shade(@bg_color,1.4);
 @define-color colorPrimaryBackdrop @colorPrimary;
-@define-color textColorPrimary #9666FF;
-@define-color textColorPrimaryShadow alpha(#9666FF,0.5);
+@define-color textColorPrimary #FFFF00;
+@define-color textColorPrimaryShadow alpha(#FFFF00,0.5);
 @define-color sidebar_color shade(@bg_color,1.2);
 
-@define-color theme_fg_color #9666FF;
-@define-color theme_text_color #9666FF;
+@define-color theme_fg_color #FFFF00;
+@define-color theme_text_color #FFFF00;
 @define-color theme_bg_color @bg_color;
 @define-color theme_base_color @base_color;
 @define-color theme_unfocused_fg_color @fg_color;
@@ -27,8 +27,8 @@
 @define-color theme_unfocused_bg_color @bg_color;
 @define-color theme_unfocused_base_color @base_color;
 
-@define-color fg_color #9666FF;
-@define-color text_color #9666FF;
+@define-color fg_color #FFFF00;
+@define-color text_color #FFFF00;
 @define-color bg_color #000000;
 @define-color base_color shade(@bg_color,0.6);
 @define-color text_view_bg @base_color;
@@ -50,7 +50,7 @@
 
 @define-color deco shade(@colorPrimary,1.2);
 
-@define-color selected_bg_color #9666FF;
+@define-color selected_bg_color #FFFF00;
 @define-color selected_fg_color #fff;
 @define-color theme_selected_bg_color @selected_bg_color;
 @define-color theme_selected_fg_color @selected_fg_color;
