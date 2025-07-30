@@ -154,11 +154,5 @@ chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 # build iso
 sudo mkarchiso -v -w "$LIVE_DIR/work" -o "$LIVE_DIR/out" "$LIVE_DIR"
 
-# font cache update
-if [ -d "$LIVE_DIR/airootfs/usr/share/fonts/" ]; then
-  echo "updating font cache..."
-  fc-cache -rv "$LIVE_DIR/airootfs/usr/share/fonts/"
-fi
-
 ISO_PATH=$(find "$LIVE_DIR/out" -name "*.iso" | head -n1)
 echo "custom iso built at $ISO_PATH"
