@@ -51,8 +51,8 @@ HOME_URL="https://batarong.neocities.org/"
 EOF
 
 # Configure autologin (pleaseeeeeeeee)
-mkdir -p /etc/lightdm
-cat > /etc/lightdm/lightdm.conf << 'EOF'
+mkdir -p "$LIVE_DIR/airootfs/etc/lightdm"
+cat > "$LIVE_DIR/airootfs/etc/lightdm/lightdm.conf" << 'EOF'
 [Seat:*]
 autologin-user=batarong
 autologin-user-timeout=15
@@ -61,8 +61,8 @@ greeter-session=lightdm-gtk-greeter
 EOF
 
 # Configure Neofetch
-mkdir -p /etc/skel/.config/fastfetch/
-cat > /etc/skel/.config/fastfetch/config.jsonc << 'EOF'
+mkdir -p "$LIVE_DIR/airootfs/etc/skel/.config/fastfetch/"
+cat > "$LIVE_DIR/airootfs/etc/skel/.config/fastfetch/config.jsonc" << 'EOF'
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "modules": [
@@ -110,7 +110,7 @@ cat > /etc/skel/.config/fastfetch/config.jsonc << 'EOF'
 EOF
 
 # Configure Neofetch
-cat > /ascii.txt << 'EOF'
+cat > "$LIVE_DIR/airootfs/ascii.txt" << 'EOF'
                    $1-:+=+
                   ::-===+
                  -:----+=+
