@@ -33,11 +33,13 @@ fastfetch
 EOF
 
 # Change hostname
+mkdir -p "$LIVE_DIR/airootfs/etc"
 cat > "$LIVE_DIR/airootfs/etc/hostname" << 'EOF'
 batarong-installer
 EOF
 
 # Change os-release (LOGO=archlinux-logo where is this and how to change)
+mkdir -p "$LIVE_DIR/airootfs/usr/lib"
 cat > "$LIVE_DIR/airootfs/usr/lib/os-release" << 'EOF'
 NAME="BatarongOS"
 PRETTY_NAME="BatarongOS"
