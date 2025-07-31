@@ -2,7 +2,8 @@
 set -e -u
 
 # Create user 'batarong' with home directory
-useradd -m -G wheel,audio,video,optical,storage -s /bin/bash batarong
+groupadd -r autologin
+useradd -m -G wheel,autologin,audio,video,optical,storage -s /bin/bash batarong
 
 # Set password for user (you can change this)
 echo "batarong:batarong" | chpasswd
@@ -19,6 +20,27 @@ systemctl set-default graphical.target
 
 # Create display-manager service link (standard practice)
 ln -sf /usr/lib/systemd/system/lightdm.service /etc/systemd/system/lightdm.service
+
+# Change os-release (LOGO=archlinux-logo where is this and how to change)
+rm -f "/usr/lib/os-release"
+cat > "/usr/lib/os-release" << 'EOF'
+NAME="BatarongOS"
+PRETTY_NAME="BatarongOS"
+ID=batarongos
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;255;255;0"
+HOME_URL="https://batarong.neocities.org/"
+EOF
+
+rm -rf "/etc/lightdm/lightdm.conf"
+cat > "/etc/lightdm/lightdm.conf" << 'EOF'
+[Seat:*]
+autologin-user=batarong
+autologin-user-timeout=15
+session-wrapper=/etc/lightdm/Xsession
+greeter-session=lightdm-gtk-greeter
+EOF
 
 echo "INFO: Extra config can be placed here, type exit to exit and continue"
 echo "INFO: Open a new tty and ssh into localhost with x11 forwarding, copy .Xauthority into batarong's home in the iso fs, run sudo mount --rbind /dev /[wherever]/Batarong-Installer/archlive/work/x86_64/airootfs/dev, chroot into thing archlive/work/x86_64/airootfs then run su batarong, and run dbus-launch xfce4-settings-manager in chroot"

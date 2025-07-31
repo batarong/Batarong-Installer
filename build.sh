@@ -38,27 +38,6 @@ cat > "$LIVE_DIR/airootfs/etc/hostname" << 'EOF'
 batarong-installer
 EOF
 
-# Change os-release (LOGO=archlinux-logo where is this and how to change)
-mkdir -p "$LIVE_DIR/airootfs/usr/lib"
-cat > "$LIVE_DIR/airootfs/usr/lib/os-release" << 'EOF'
-NAME="BatarongOS"
-PRETTY_NAME="BatarongOS"
-ID=batarongos
-ID_LIKE=arch
-BUILD_ID=rolling
-ANSI_COLOR="38;2;255;255;0"
-HOME_URL="https://batarong.neocities.org/"
-EOF
-
-# Configure autologin (pleaseeeeeeeee)
-mkdir -p "$LIVE_DIR/airootfs/etc/lightdm"
-cat > "$LIVE_DIR/airootfs/etc/lightdm/lightdm.conf" << 'EOF'
-[Seat:*]
-autologin-user=batarong
-autologin-user-timeout=15
-session-wrapper=/etc/lightdm/Xsession
-greeter-session=lightdm-gtk-greeter
-EOF
 
 # Configure Neofetch
 mkdir -p "$LIVE_DIR/airootfs/etc/skel/.config/fastfetch/"
