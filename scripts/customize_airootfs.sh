@@ -42,9 +42,5 @@ session-wrapper=/etc/lightdm/Xsession
 greeter-session=lightdm-gtk-greeter
 EOF
 
-echo "INFO: Extra config can be placed here, type exit to exit and continue"
-echo "INFO: Open a new tty and ssh into localhost with x11 forwarding, copy .Xauthority into batarong's home in the iso fs, run sudo mount --rbind /dev /[wherever]/Batarong-Installer/archlive/work/x86_64/airootfs/dev, chroot into thing archlive/work/x86_64/airootfs then run su batarong, and run dbus-launch xfce4-settings-manager in chroot"
-echo "INFO: https://github.com/pdn6606/TWM-xfce/blob/main/README.md follow all non-optional configuration instructions."
-echo "INFO: Remember to set wallpaper [/usr/share/backgrounds/] BatarongOS-Modern.png"
-su batarong
-sudo rm -f /home/batarong/.Xauthority
+#echo "INFO: Extra config can be placed here, type exit to exit and continue"
+#su batarong
