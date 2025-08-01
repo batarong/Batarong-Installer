@@ -66,6 +66,32 @@ $2===**+*#$1%%%%+===-========++++==  *++=-:.
                    *-:-+*###%%%%#
 EOF
 
+# Welcome Screen!!!
+
+mkdir -p "$LIVE_DIR/airootfs/usr/local/bin"
+
+cat > "$LIVE_DIR/airootfs/usr/local/bin/batarongos-welcome" << 'EOF'
+#!/bin/bash
+FLAG="$HOME/.batarongos_first_login_done"
+if [ ! -f "$FLAG" ]; then
+  clear
+  cat /etc/ascii.txt
+  echo ""
+  echo "Welcome to BatarongOS!!!! :D"
+  echo "Based off of Arch Linux."
+  echo "Github: https://github.com/batarong"
+  touch "$FLAG"
+fi
+EOF
+
+chmod +x "$LIVE_DIR/airootfs/usr/local/bin/batarongos-welcome"
+
+mkdir -p "$LIVE_DIR/airootfs/etc/skel"
+
+cat > "$LIVE_DIR/airootfs/etc/skel/.bashrc" << 'EOF'
+/usr/local/bin/batarongos-welcome
+EOF
+
 # copy theme files if they exist
 mkdir -p "$LIVE_DIR/airootfs/usr/share/fonts/"
 mkdir -p "$LIVE_DIR/airootfs/usr/share/icons/"
