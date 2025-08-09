@@ -42,5 +42,7 @@ session-wrapper=/etc/lightdm/Xsession
 greeter-session=lightdm-gtk-greeter
 EOF
 
+# add icon pack 
+pacman -S --noconfirm papirus-icon-theme
 #echo "INFO: Extra config can be placed here, type exit to exit and continue"
 #su batarong
