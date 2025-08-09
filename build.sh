@@ -30,7 +30,6 @@ xfce4-terminal
 network-manager-applet
 dbus
 fastfetch
-papirus-icon-theme
 EOF
 
 # Change hostname
