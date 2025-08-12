@@ -30,6 +30,7 @@ xfce4-terminal
 network-manager-applet
 dbus
 fastfetch
+arch-install-scripts
 EOF
 
 # Change hostname
