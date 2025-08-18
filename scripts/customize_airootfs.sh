@@ -43,6 +43,6 @@ greeter-session=lightdm-gtk-greeter
 EOF
 
 # add icon pack 
-pacman -S --noconfirm papirus-icon-theme
+#pacman -S --noconfirm papirus-icon-theme # requires fix to work in config.zip and need to merge with high contrast icon pack
 #echo "INFO: Extra config can be placed here, type exit to exit and continue"
 #su batarong

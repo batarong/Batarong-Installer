@@ -109,6 +109,11 @@ mkdir -p "$LIVE_DIR/airootfs/usr/share/backgrounds/"
 cp scripts/customize_airootfs.sh "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 
+# copy the install script
+mkdir -p "$LIVE_DIR/airootfs/home/idot/Desktop/"
+cp scripts/install.sh "$LIVE_DIR/airootfs/home/idot/Desktop/install.sh"
+chmod +x "$LIVE_DIR/airootfs/home/idot/Desktop/install.sh"
+
 # build iso
 sudo mkarchiso -v -w "$LIVE_DIR/work" -o "$LIVE_DIR/out" "$LIVE_DIR"
 
