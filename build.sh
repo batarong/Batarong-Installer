@@ -14,6 +14,8 @@ rm -f "$LIVE_DIR/profiledef.sh"
 cp profiledef.sh "$LIVE_DIR/profiledef.sh"
 rm -f "$LIVE_DIR/pacman.conf"
 cp pacman.conf "$LIVE_DIR/pacman.conf"
+rm -f "$LIVE_DIR/grub/grub.cfg"
+cp grub.cfg "$LIVE_DIR/grub/grub.cfg"
 
 # add packages for xfce
 cat <<EOF >> "$LIVE_DIR/packages.x86_64"
@@ -85,7 +87,7 @@ if [ ! -f "$FLAG" ]; then
 fi
 EOF
 
-chmod +x "$LIVE_DIR/airootfs/usr/local/bin/batarongos-welcome"
+chmod 557 "$LIVE_DIR/airootfs/usr/local/bin/batarongos-welcome"
 
 mkdir -p "$LIVE_DIR/airootfs/etc/skel"
 
@@ -110,9 +112,9 @@ cp scripts/customize_airootfs.sh "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 
 # copy the install script
-mkdir -p "$LIVE_DIR/airootfs/home/idot/Desktop/"
-cp scripts/install.sh "$LIVE_DIR/airootfs/home/idot/Desktop/install.sh"
-chmod +x "$LIVE_DIR/airootfs/home/idot/Desktop/install.sh"
+mkdir -p "$LIVE_DIR/airootfs/home/batarong/Desktop/"
+cp scripts/install.sh "$LIVE_DIR/airootfs/home/batarong/Desktop/install.sh"
+chmod 557 "$LIVE_DIR/airootfs/home/batarong/Desktop/install.sh"
 
 # build iso
 sudo mkarchiso -v -w "$LIVE_DIR/work" -o "$LIVE_DIR/out" "$LIVE_DIR"
