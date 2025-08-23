@@ -59,14 +59,12 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 echo "did the grub, yum yum."
 
 read -p "Enter your silly username: " USERNAME
-read -p "Enter your silly password: " PASSWORD
 if [ "x`printf '%s' "$USERNAME" | tr -d "$IFS"`" = x ] && [ "x`printf '%s' "$PASSWORD" | tr -d "$IFS"`" = x ]; then
   echo "not very silly password/username, needs to be more silly :3 (empty or blank password/username)"
   read -p "Enter your silly username: " USERNAME
-  read -p "Enter your silly password: " PASSWORD
 else
   arch-chroot /mnt useradd -G wheel -m -U "$USERNAME"
-  arch-chroot /mnt echo "$PASSWORD" | passwd "$USERNAME" --stdin
+  arch-chroot /mnt passwd "$USERNAME"
   echo "did it cutie! :3" # no failsafe if this fails, would be shitty for the user :(
 fi
 echo "maybe dummy but work please, reboot and done"
