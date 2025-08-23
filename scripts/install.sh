@@ -11,9 +11,14 @@ sleep 5
 
 wipefs -a "$DISK"
 sgdisk -Z "$DISK" || true
-parted -s "$DISK" mklabel gpt
-parted -s "$DISK" mkpart ESP fat32 1MiB 769MiB
-parted -s "$DISK" set 1 esp on
+if test -f "/sys/firmware/efi"; then
+    parted -s "$DISK" mklabel gpt
+    parted -s "$DISK" mkpart ESP fat32 1MiB 769MiB
+    parted -s "$DISK" set 1 esp on
+else
+    parted -s "$DISK" mklabel msdos
+    parted -s "$DISK" mkpart primary fat32 1MiB 769MiB
+fi
 parted -s "$DISK" set 1 boot on
 parted -s "$DISK" mkpart primary ext4 769MiB 100%
 
@@ -44,7 +49,11 @@ echo "configuration of stuff"
 genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt pacman -Syu --noconfirm grub sudo
-arch-chroot /mnt grub-install # no failsafe, sadge :c high change could fail
+if test -f "/sys/firmware/efi"; then
+    arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=BatarongOS
+else
+    arch-chroot /mnt grub-install $DISK
+fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "did the grub, yum yum."
@@ -61,5 +70,3 @@ else
   echo "did it cutie! :3" # no failsafe if this fails, would be shitty for the user :(
 fi
 echo "maybe dummy but work please, reboot and done"
-
-
