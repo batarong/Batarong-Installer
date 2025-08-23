@@ -8,7 +8,7 @@ if ! pacman -Q archiso zip unzip &> /dev/null; then
 fi
 
 LIVE_DIR="archlive"
-rm -rf "$LIVE_DIR"
+sudo rm -rf "$LIVE_DIR"
 cp -r /usr/share/archiso/configs/releng "$LIVE_DIR"
 rm -f "$LIVE_DIR/profiledef.sh"
 cp profiledef.sh "$LIVE_DIR/profiledef.sh"
@@ -81,7 +81,7 @@ if [ ! -f "$FLAG" ]; then
   cat /etc/ascii.txt
   echo ""
   echo "Welcome to BatarongOS!!!! :D"
-  echo "Based off of Arch Linux."
+  echo "Based on Arch Linux."
   echo "Github: https://github.com/batarong"
   touch "$FLAG"
 fi

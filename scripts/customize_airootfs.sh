@@ -5,6 +5,9 @@ set -e -u
 groupadd -r autologin
 useradd -m -G wheel,autologin,audio,video,optical,storage -s /bin/bash batarong
 
+# Make batarong's home directory owned by batarong (thanks, build.sh)
+chown -R batarong:batarong /home/batarong
+
 # Set password for user (you can change this)
 echo "batarong:batarong" | chpasswd
 
