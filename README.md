@@ -34,6 +34,9 @@ The ISO includes a preconfigured user:
 - **ISO build fails:** Make sure you have enough disk space and permissions (run with `sudo` if needed).
 - **Black screen after boot:** This usually indicates a graphics driver issue. Try adding `nomodeset` kernel parameter.
 
+## Todo:
+- Doesn't boot
+
 ## References
 - [Archiso ArchWiki](https://wiki.archlinux.org/title/Archiso)
 - [Xfce ArchWiki](https://wiki.archlinux.org/title/Xfce)
