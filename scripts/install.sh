@@ -60,7 +60,7 @@ echo "did the grub, yum yum."
 
 read -p "Enter your silly username: " USERNAME
 read -p "Enter your silly password: " PASSWORD
-while [ "x`printf '%s' "$USERNAME" | tr -d "$IFS"`" = x ] && [ "x`printf '%s' "$PASSWORD" | tr -d "$IFS"`" = x ]; then
+if [ "x`printf '%s' "$USERNAME" | tr -d "$IFS"`" = x ] && [ "x`printf '%s' "$PASSWORD" | tr -d "$IFS"`" = x ]; then
   echo "not very silly password/username, needs to be more silly :3 (empty or blank password/username)"
   read -p "Enter your silly username: " USERNAME
   read -p "Enter your silly password: " PASSWORD
