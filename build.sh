@@ -120,6 +120,9 @@ chmod 557 "$LIVE_DIR/airootfs/home/batarong/install.sh"
 cp scripts/Install\ BatarongOS.sh "$LIVE_DIR/airootfs/home/batarong/Desktop/Install BatarongOS"
 chmod 557 "$LIVE_DIR/airootfs/home/batarong/Desktop/Install BatarongOS"
 
+# Make the welcome program executable
+chmod +x "$LIVE_DIR/airootfs/usr/local/bin/batarongos-welcome"
+
 # build iso
 sudo mkarchiso -v -w "$LIVE_DIR/work" -o "$LIVE_DIR/out" "$LIVE_DIR"
 
