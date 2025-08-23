@@ -113,8 +113,12 @@ chmod +x "$LIVE_DIR/airootfs/root/customize_airootfs.sh"
 
 # copy the install script
 mkdir -p "$LIVE_DIR/airootfs/home/batarong/Desktop/"
-cp scripts/install.sh "$LIVE_DIR/airootfs/home/batarong/Desktop/install.sh"
-chmod 557 "$LIVE_DIR/airootfs/home/batarong/Desktop/install.sh"
+cp scripts/install.sh "$LIVE_DIR/airootfs/home/batarong/install.sh"
+chmod 557 "$LIVE_DIR/airootfs/home/batarong/install.sh"
+
+# Copy the script that runs the install script
+cp scripts/Install\ BatarongOS.sh "$LIVE_DIR/airootfs/home/batarong/Desktop/Install BatarongOS"
+chmod 557 "$LIVE_DIR/airootfs/home/batarong/Desktop/Install BatarongOS"
 
 # build iso
 sudo mkarchiso -v -w "$LIVE_DIR/work" -o "$LIVE_DIR/out" "$LIVE_DIR"
