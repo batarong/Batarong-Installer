@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 read -p "Enter your disk (e.g. /dev/sdX): " DISK
-BOOT_LABEL="Batarong-EFI"
+BOOT_LABEL="BatarongEFI"
 ROOT_LABEL="Bataroot"
 
 [[ -b "$DISK" ]] || { echo "Device $DISK not found"; exit 1; }
