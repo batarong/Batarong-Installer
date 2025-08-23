@@ -1,1 +1,1 @@
-xfce4-terminal -x ~/install.sh
+sudo xfce4-terminal -x ~/install.sh
