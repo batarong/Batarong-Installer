@@ -66,7 +66,7 @@ if [ "x`printf '%s' "$USERNAME" | tr -d "$IFS"`" = x ] && [ "x`printf '%s' "$PAS
   read -p "Enter your silly password: " PASSWORD
 else
   arch-chroot /mnt useradd -G wheel -m -U "$USERNAME"
-  arch-chroot /mnt echo "$PASSWORD" && passwd "$USERNAME" --stdin
+  arch-chroot /mnt echo "$PASSWORD" | passwd "$USERNAME" --stdin
   echo "did it cutie! :3" # no failsafe if this fails, would be shitty for the user :(
 fi
 echo "maybe dummy but work please, reboot and done"
