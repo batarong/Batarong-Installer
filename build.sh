@@ -78,7 +78,7 @@ cat > "$LIVE_DIR/airootfs/usr/local/bin/batarongos-welcome" << 'EOF'
 FLAG="$HOME/.batarongos_first_login_done"
 if [ ! -f "$FLAG" ]; then
   clear
-  cat /etc/ascii.txt
+  cat /ascii.txt
   echo ""
   echo "Welcome to BatarongOS!!!! :D"
   echo "Based on Arch Linux."
