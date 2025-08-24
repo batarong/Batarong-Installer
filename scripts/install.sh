@@ -41,19 +41,24 @@ sudo mount "$P2" /mnt/
 mkdir -p /mnt/boot
 sudo mount "$P1" /mnt/boot
 
-echo "copying data to new disk, (this fucks shit up, be patient)"
+echo "copying data to new disk, (this fucks shit up, be patient and hold still (especially if you are holding solder joints on your usb together))"
 
 sudo rsync -aHAXS --info=progress2 --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /* /mnt
 
 echo "configuration of stuff"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt pacman -Syu --noconfirm grub sudo
+arch-chroot /mnt pacman -Syu --noconfirm grub sudo efibootmgr
+
+arch-chroot /mnt pacman -R --noconfirm linux-zen
+arch-chroot /mnt pacman -S --noconfirm linuz-zen
+
 if test -f "/sys/firmware/efi"; then
-    arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=BatarongOS
+    arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=BatarongOS --removable
 else
     arch-chroot /mnt grub-install $DISK
 fi
+
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "did the grub, yum yum."
