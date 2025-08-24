@@ -120,7 +120,7 @@ chmod +x "$LIVE_DIR/airootfs/home/batarong/install.sh"
 # Copy the script that runs the install script
 cp scripts/Install\ BatarongOS.sh "$LIVE_DIR/airootfs/home/batarong/Desktop/Install BatarongOS.sh"
 chmod 557 "$LIVE_DIR/airootfs/home/batarong/Desktop/Install BatarongOS.sh"
-chmod +x "$LIVE_DIR/airootfs/home/batarong/Desktop/Install Batarong.sh"
+chmod +x "$LIVE_DIR/airootfs/home/batarong/Desktop/Install BatarongOS.sh"
 
 # Make the welcome program executable
 chmod +x "$LIVE_DIR/airootfs/usr/local/bin/batarongos-welcome"
