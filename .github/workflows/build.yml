@@ -35,7 +35,7 @@ jobs:
               echo 'Container: whoami:' \$(whoami); \
               echo 'Container: uid/gid:' \$(id -u):\$(id -g); \
               pwd; ls -la .; \
-              pacman -Syu sudo grub archiso
+              pacman -Syu --noconfirm sudo grub archiso
               chmod +x ./build.sh || true; \
               bash -x ./build.sh 2>&1 | tee /workspace/build-output.log; \
               echo 'build exit code: ' \$?; \
