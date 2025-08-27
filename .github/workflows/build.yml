@@ -17,10 +17,9 @@ jobs:
       - name: build iso
         run: |
           set -euo pipefail
-
-          # Ensure workspace path is set (github workspace is mounted by actions/checkout)
           WORKDIR="${GITHUB_WORKSPACE:-/workspace}"
           echo "Workspace: $WORKDIR"
+          echo "Starting privileged container..."
 
           docker run --rm \
             --privileged \
@@ -30,20 +29,17 @@ jobs:
             -v /run:/run:rw \
             -v /sys:/sys:rw \
             -w /workspace \
-            archlinux:latest \
+            batarong-arch-build \
             /bin/bash -lc "\
-              set -euo pipefail; \
-              export TERM=dumb; \
-              # refresh keyring and bootstrap pacman in ephemeral container \
-              pacman -Sy --noconfirm archlinux-keyring || true; \
-              # initialize keys if necessary (may print warnings on ephemeral container) \
-              pacman-key --init || true; \
-              pacman-key --populate archlinux || true; \
-              # Install required packages for building an archiso (non-interactive) \
-              pacman -Syu --noconfirm --needed archiso unzip sudo git base-devel || true; \
-              # Make sure build script is executable and run it as root (sudo not required inside container) \
+              set -xeuo pipefail; \
+              echo 'Container: whoami:' \$(whoami); \
+              echo 'Container: uid/gid:' \$(id -u):\$(id -g); \
+              pwd; ls -la .; \
               chmod +x ./build.sh || true; \
-              ./build.sh \
+              bash -x ./build.sh 2>&1 | tee /workspace/build-output.log; \
+              echo 'build exit code: ' \$?; \
+              echo 'listing archlive/ tree (if present)'; ls -la archlive || true; ls -la archlive/out || true; \
+              find . -name \"*.iso\" -ls || true; \
             "
         shell: bash
 
