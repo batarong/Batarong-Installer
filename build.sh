@@ -4,7 +4,7 @@ set -euo pipefail
 # check if archiso installed
 if ! pacman -Q archiso zip unzip &> /dev/null; then
     echo "essential packages not installed. installing..."
-    sudo pacman -S --needed --noconfirm archiso zip unzip
+    sudo pacman -S --needed --noconfirm archiso zip unzip grub
 fi
 
 LIVE_DIR="archlive"
