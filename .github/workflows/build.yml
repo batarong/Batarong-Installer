@@ -1,0 +1,54 @@
+name: make batarongos
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: build iso
+        run: |
+          set -euo pipefail
+
+          # Run a disposable Arch container that mounts the repo
+          docker run --rm \
+            -v "${{ github.workspace }}:/workspace" \
+            -w /workspace \
+            archlinux:latest \
+            /bin/bash -lc "\
+              set -euo pipefail; \
+              # Ensure keyring and pacman are usable in the container environment
+              pacman -Sy --noconfirm archlinux-keyring || true; \
+              pacman-key --init || true; \
+              pacman-key --populate archlinux || true; \
+              # Install required packages for mkarchiso and building the ISO
+              pacman -Syu --noconfirm archiso unzip sudo git base-devel || true; \
+              # Make the build script executable and run it
+              chmod +x ./build.sh || true; \
+              ./build.sh \
+            "
+
+      - name: make build output readable
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/workspace" \
+            -w /workspace \
+            archlinux:latest \
+            /bin/bash -lc "chmod -R a+rwX archlive/out || true"
+
+      - name: show output dir
+        run: ls -la archlive/out || true
+
+      - name: iso artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: batarong-iso
+          path: archlive/out/*.iso
