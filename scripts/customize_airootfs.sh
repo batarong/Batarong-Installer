@@ -9,7 +9,7 @@ useradd -m -G wheel,autologin,audio,video,optical,storage -s /bin/bash batarong
 chown -R batarong:batarong /home/batarong
 
 # Make installer executable (i'm going insane)
-chmod +x /home/batarong/Desktop/Install\ Batarong.sh
+chmod +x /home/batarong/Desktop/Install\ BatarongOS.sh
 chmod +x /home/batarong/install.sh
 
 # Set password for user (you can change this)
