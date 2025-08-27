@@ -18,20 +18,21 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Run a disposable Arch container that mounts the repo
           docker run --rm \
+            --privileged \
+            --security-opt seccomp=unconfined \
             -v "${{ github.workspace }}:/workspace" \
             -w /workspace \
             archlinux:latest \
             /bin/bash -lc "\
               set -euo pipefail; \
-              # Ensure keyring and pacman are usable in the container environment
+              # Try to make pacman usable inside ephemeral container (may print warnings) \
               pacman -Sy --noconfirm archlinux-keyring || true; \
               pacman-key --init || true; \
               pacman-key --populate archlinux || true; \
-              # Install required packages for mkarchiso and building the ISO
+              # Install required packages for mkarchiso and building the ISO \
               pacman -Syu --noconfirm archiso unzip sudo git base-devel || true; \
-              # Make the build script executable and run it
+              # Ensure build script is executable and run it \
               chmod +x ./build.sh || true; \
               ./build.sh \
             "
